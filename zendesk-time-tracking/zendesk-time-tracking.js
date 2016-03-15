@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Zendesk time tracker
 // @namespace    http://procurios.com/
-// @version      0.2.1
+// @version      0.2.2
 // @description  Track time spent on tickets
 // @author       Taco van den Broek
 // @match        https://procurios.zendesk.com/agent/tickets/*
