@@ -97,17 +97,17 @@
         if (!timeSpentElem) {
             return;
         }
-   
-        trackedUrls[currentUrl].sessions.push([trackedUrls[currentUrl].startSession, new Date(), null]);
-        trackedUrls[currentUrl].startSession = new Date();
-        
+
+        var sessions = trackedUrls[currentUrl].sessions.slice(0);
+        sessions.push([trackedUrls[currentUrl].startSession, new Date(), null]);
+
         var totalTime = 0;
         var firstSessionStart = null;
         var lastSessionEnd = 0;
         var sessions = [];
         var session, sessionStartTS, sessionEndTS, sessionDescription, sessionTime;
-        for (var i = 0; i < trackedUrls[currentUrl].sessions.length; i++) {
-            session = trackedUrls[currentUrl].sessions[i];
+        for (var i = 0; i < sessions.length; i++) {
+            session = sessions[i];
             sessionStartTS = session[0].getTime();
             sessionEndTS = session[1].getTime();
             
