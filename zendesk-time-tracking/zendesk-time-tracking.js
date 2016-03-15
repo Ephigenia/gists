@@ -187,6 +187,8 @@
                 };
             }
             trackedUrls[currentUrl].startSession = new Date();
+        } else if ( !(currentUrl in trackedUrls) ) {
+            return;
         }
         
         var currentTags = getCurrentTags();
