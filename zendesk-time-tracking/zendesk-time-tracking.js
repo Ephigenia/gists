@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Zendesk time tracker
 // @namespace    http://procurios.com/
-// @version      0.2.2
+// @version      0.3
 // @description  Track time spent on tickets
 // @author       Taco van den Broek
-// @match        https://procurios.zendesk.com/agent/tickets/*
+// @match        https://procurios.zendesk.com/agent/*
 // @grant        none
 // @updateUrl    https://raw.githubusercontent.com/procurios/gists/master/zendesk-time-tracking/zendesk-time-tracking.js
 // ==/UserScript==
@@ -172,6 +172,10 @@
 
     var check = function () {
         if (currentUrl != document.location.href) {
+            if (!document.location.href.match(/\/agent\/tickets\/\d+/)) {
+                return;
+            }
+
             if (currentUrl && (currentUrl in trackedUrls)) {
                 trackedUrls[currentUrl].sessions.push([trackedUrls[currentUrl].startSession, new Date(), getCurrentTicketTitle()]);
                 trackedUrls[currentUrl].startSession = null;
