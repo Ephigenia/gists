@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Zendesk time tracker
 // @namespace    http://procurios.com/
-// @version      0.3
+// @version      0.3.1
 // @description  Track time spent on tickets
 // @author       Taco van den Broek
 // @match        https://procurios.zendesk.com/agent/*
@@ -104,7 +104,7 @@
         var totalTime = 0;
         var firstSessionStart = null;
         var lastSessionEnd = 0;
-        var sessions = [];
+        var sessionDescriptions = [];
         var session, sessionStartTS, sessionEndTS, sessionDescription, sessionTime;
         for (var i = 0; i < sessions.length; i++) {
             session = sessions[i];
@@ -119,8 +119,8 @@
             totalTime += sessionTime;
 
             if (sessionTime >= 30000) {
-                if (sessions.length > 0) {
-                    sessions.push('break (' + getDurationString(sessionStartTS - lastSessionEnd) + ')');
+                if (sessionDescriptions.length > 0) {
+                    sessionDescriptions.push('break (' + getDurationString(sessionStartTS - lastSessionEnd) + ')');
                 }
 
                 sessionDescription =
@@ -132,15 +132,15 @@
                     sessionDescription += ' -> ' + session[2];
                 }
 
-                sessions.push(sessionDescription);
+                sessionDescriptions.push(sessionDescription);
             }
             lastSessionEnd = sessionEndTS;
         }
 
         var message = [];
-        if (sessions.length) {
+        if (sessionDescriptions.length) {
             message.push('Sessies van dit ticket:');
-            message.push(sessions.join("\n"));
+            message.push(sessionDescriptions.join("\n"));
             message.push('Totale sessie tijd: ' + getDurationString(totalTime) + "\n"
                 + 'Totale doorlooptijd: ' + getDurationString(lastSessionEnd - firstSessionStart));
         }
