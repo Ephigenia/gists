@@ -7,12 +7,12 @@ Currently only the Client Credentials Grant Access Token Request is provided, ot
 ## Used variables
 This request needs an environment containing the following variables:
 
-**{{url}}** The base url for the OAuth endpoints (e.g. https://www.example.com)
-**{{tokenEndpoint}}** The path to the token endpoint (e.g. /oauth/token)
-**{{scope}}** The requested scope
-**{{clientId}}** The client id
-**{{clientSecret}}** The client secret
+- **{{url}}** The base url for the OAuth endpoints (e.g. https://www.example.com)
+- **{{tokenEndpoint}}** The path to the token endpoint (e.g. /oauth/token)
+- **{{scope}}** The requested scope
+- **{{clientId}}** The client id
+- **{{clientSecret}}** The client secret
 
 The following variables will be defined by running the request:
 
-**{{access_token}}** Will contain the retrieved access token
+- **{{access_token}}** Will contain the retrieved access token
