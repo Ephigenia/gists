@@ -23,7 +23,7 @@
 		{
 			"id": "6dff4496-3ac3-8c43-b452-3eff70466190",
 			"headers": "",
-			"url": "{{url}}/l/oauth2/token",
+			"url": "{{url}}{{tokenEndpoint}}",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
