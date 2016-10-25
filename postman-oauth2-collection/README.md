@@ -2,7 +2,14 @@
 This collection can be imported into the [Postman app](http://www.getpostman.com/).
 
 ## Provided requests
-Currently only the Client Credentials Grant Access Token Request is provided, other requests might be added later.
+### Authorization Code Grant
+- Access token request
+
+### Client Credentials Grant
+- Access token request
+
+### Refresh Token
+- Refresh access token request
 
 ## Used variables
 This request needs an environment containing the following variables:
@@ -12,7 +19,10 @@ This request needs an environment containing the following variables:
 - **{{scope}}** The requested scope
 - **{{clientId}}** The client id
 - **{{clientSecret}}** The client secret
+- **{{authorizationCode}}** The authorization code retrieved using an authorization request for the Authorization Code Grant
+- **{{redirectUri}}** The redirect uri to use (should be registered with the client)
 
 The following variables will be defined by running the request:
 
 - **{{access_token}}** Will contain the retrieved access token
+- **{{refresh_token}}** Will contain the retrieved refresh token (if any)
